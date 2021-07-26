@@ -1,8 +1,11 @@
+import { Slider } from './components/Slider';
+
 function App() {
+
   return (
-    <div>
-      m
-    </div>
+    <>
+     <Slider />
+    </>
   );
 }
 
