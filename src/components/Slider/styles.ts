@@ -101,7 +101,7 @@ export const SlideWrapper = styled.div<Slide>`
         currentSlide ? `translateX(-${currentSlide}00%)` : 'translate(0%)'};
 
   @media (min-width: 368px) {
-    min-width: 190px;
+    min-width: 215px;
   }
 `;
 
@@ -112,7 +112,6 @@ export const Slide = styled.div<Slide>`
  width: 90px;
  height: 210px;
  min-width: 200px;
- border: 1px solid black;
  font-family: 'Oswald';
  font-weight: 500;
  color: #fff;
@@ -156,7 +155,7 @@ export const Slide = styled.div<Slide>`
 
 > p {
     position: absolute;
-    top: -6px;
+    top: 8px;
 }
 
  > img {
@@ -167,7 +166,7 @@ export const Slide = styled.div<Slide>`
  > h4 {
      position: absolute;
      color: #fff;
-     bottom: 0;
+     bottom: 18px;
      text-shadow: 2px 2px 10px #000;
  }
 `;
