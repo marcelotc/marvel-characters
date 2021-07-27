@@ -56,7 +56,7 @@ export const MenuResponsive = styled.div<HeaderProps>`
     text-align: center;
     height: 110px;
     transition: height 1s;
-    display: ${(props) => props.hide ? 'none' : 'unset'};
+    display: ${(props) => props.hide ? 'unset' : 'none'};
 
     @media (max-width: 588px) {
         position: absolute;

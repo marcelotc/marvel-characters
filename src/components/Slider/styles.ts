@@ -10,11 +10,22 @@ export const Container = styled.div`
   align-items: center;
   justify-content: center;
   flex-direction: column;
-  margin-right: 15%;
-  margin-left: 15%;
+
+  > div {
+    margin-top: 160px;
+    width: 88%;
+  }
+
+  background: #000;
 
   @media (max-width: 625px) {
     margin: 0;
+  }
+
+  @media (max-width: 625px) {
+    > div {
+      margin-top: 110px;
+    }
   }
 `;
 
@@ -25,9 +36,9 @@ export const SliderHeader = styled.div`
 
     h1 {
       font-family: 'Oswald';
-      color: #000;
+      color: #fff;
       font-weight: 500;
-      margin: 0;
+      margin-left: 12px;
     }
 
  @media (max-width: 625px) {
@@ -45,12 +56,13 @@ export const ButtonsWrapper = styled.div`
   flex-wrap: wrap;
   align-self: center;
   gap: 5px;
+  margin-right: 1px;
 `;
 
 export const NextButton = styled.div<Slide>`
   display: flex;
   align-items: center;
-  border: 3px solid #000;
+  border: 3px solid #fff;
   color: #fff;
   padding: 3px;
   cursor: ${({ currentSlide, slidesLength = 3 }) =>
@@ -77,14 +89,13 @@ export const SliderContainer = styled.div`
   align-items: flex-end;
 
   width: 100%;
-  max-width: 885px;
 
   padding: 15px;
 
   overflow: hidden;
 
   @media (min-width: 1300.1px) {
-    max-width: 960px;
+    max-width: 1211px;
   }
 `;
 
@@ -102,6 +113,10 @@ export const SlideWrapper = styled.div<Slide>`
 
   @media (min-width: 368px) {
     min-width: 215px;
+  }
+
+  @media (max-width: 368px) {
+    min-width: unset;
   }
 `;
 

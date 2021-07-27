@@ -49,34 +49,36 @@ export function Slider() {
 
   return (
     <Container>
-      <SliderHeader>
-      <h1>PERSONAGENS EM DESTAQUE</h1>
-      <ButtonsWrapper>
-          <PrevButton
-            currentSlide={currentSlide}
-            slidesLength={characters.length}
-            onClick={() => decreaseSlide(currentSlide, setCurrentSlide)}
-          ><FaChevronLeft color="#000" /></PrevButton>
+      <div>
+        <SliderHeader>
+        <h1>PERSONAGENS EM DESTAQUE</h1>
+        <ButtonsWrapper>
+            <PrevButton
+              currentSlide={currentSlide}
+              slidesLength={characters.length}
+              onClick={() => decreaseSlide(currentSlide, setCurrentSlide)}
+            ><FaChevronLeft color="#fff" /></PrevButton>
 
-          <NextButton
-            currentSlide={currentSlide}
-            slidesLength={characters.length}
-            onClick={() => increaseSlide(currentSlide, setCurrentSlide, characters.length)}
-          ><FaChevronRight color="#000"  /></NextButton>
-        </ButtonsWrapper>
-      </SliderHeader>
-      <SliderContainer>
-        {characters.map((character) => (
-          <SlideWrapper key={character.id} currentSlide={currentSlide}>
-            <Slide>
-              <div className="title" />
-              <p>MOVIES</p>
-              <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} />
-              <h4>{character.name}</h4>
-            </Slide>
-          </SlideWrapper>
-        ))}
-        </SliderContainer>
+            <NextButton
+              currentSlide={currentSlide}
+              slidesLength={characters.length}
+              onClick={() => increaseSlide(currentSlide, setCurrentSlide, characters.length)}
+            ><FaChevronRight color="#fff"  /></NextButton>
+          </ButtonsWrapper>
+        </SliderHeader>
+        <SliderContainer>
+          {characters.map((character) => (
+            <SlideWrapper key={character.id} currentSlide={currentSlide}>
+              <Slide>
+                <div className="title" />
+                <p>MOVIES</p>
+                <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} />
+                <h4>{character.name}</h4>
+              </Slide>
+            </SlideWrapper>
+          ))}
+          </SliderContainer>
+        </div>
       </Container>
   );
 }
