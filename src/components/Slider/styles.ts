@@ -170,7 +170,7 @@ export const Slide = styled.div<Slide>`
 
 > p {
     position: absolute;
-    top: 8px;
+    margin-top: 8px;
 }
 
  > img {

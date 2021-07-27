@@ -77,7 +77,7 @@ export function Slider() {
               </Slide>
             </SlideWrapper>
           ))}
-          </SliderContainer>
+        </SliderContainer>
         </div>
       </Container>
   );

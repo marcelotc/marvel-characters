@@ -1,6 +1,7 @@
 import { Slider } from './components/Slider';
 import { Header } from './components/Header';
 import { Banner } from './components/Banner';
+import { CharactersList } from './components/CharactersList';
 
 function App() {
 
@@ -9,6 +10,7 @@ function App() {
      <Header />
      <Banner />
      <Slider />
+     <CharactersList />
     </>
   );
 }
