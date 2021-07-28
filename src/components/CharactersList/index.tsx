@@ -2,22 +2,17 @@ import { useEffect, useState } from 'react';
 import { time, publicKey, hash} from '../../services/authorization';
 import api from '../../services/api';
 import { Pagination } from './component/Pagination';
+import { ModalComponent } from './component/Modal';
+import { CharactersInterface } from './component/types';
 
 import { Container, List, ListContainer, CardContainer, Card, CardFooter } from './style';
-
-interface CharactersInterface {
-    id: string;
-    name: string;
-    thumbnail: {
-      extension: string;
-      path: string;
-    }
-  }
 
 export function CharactersList() {
     const [characters, setCharacters] = useState<CharactersInterface[]>([]);
     const [totalCharacters, setTotalCharacters] = useState(0);
     const [pageOffest, setPageOffest] = useState(0);
+    const [modalIsOpen, setIsOpen] = useState(false);
+    const [characterDetails, setCharacterDetails] = useState<CharactersInterface>();
 
     useEffect(() => {
         const getCharacters = async () => {
@@ -28,13 +23,22 @@ export function CharactersList() {
         getCharacters();  
     }, [pageOffest]);
 
+    function openModal(character: CharactersInterface) {
+        setIsOpen(true);
+        setCharacterDetails(character);
+    }
+    
+    function closeModal() {
+        setIsOpen(false);
+    }
+
     return (
         <Container>
             <List>
                 <h1>LISTA DE PERSONAGENS DA MARVEL</h1>
                 <ListContainer>
                     {characters.map((character) => (
-                        <CardContainer key={character.id}>
+                        <CardContainer key={character.id} onClick={() => openModal(character)}>
                             <Card>
                                 <div className="title" />
                                 <p>MOVIES</p>
@@ -52,6 +56,11 @@ export function CharactersList() {
                     setPageOffest={setPageOffest}
                  />
             </List>
+            <ModalComponent 
+                modalIsOpen={modalIsOpen}
+                closeModal={closeModal}
+                characterDetails={characterDetails}
+            />
         </Container>
     )
 }

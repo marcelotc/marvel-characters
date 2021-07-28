@@ -15,7 +15,7 @@ export function Pagination({ totalCharacters, characterPerPage, setPageOffest }:
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
 
-  const handleClick = (number: any) => {
+  const handleClick = (number: number) => {
     setcurrentPage(number);
     setPageOffest(number - 1);
   };

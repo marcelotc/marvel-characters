@@ -29,7 +29,14 @@ export const ListContainer = styled.div`
   }
 `;
 
-export const CardContainer = styled.div``;
+export const CardContainer = styled.div`
+  cursor: pointer;
+  transition: filter .2s ease;
+  
+  &:hover {
+    filter: brightness(70%);
+  }
+`;
 
 export const Card = styled.div`
  display: flex;
