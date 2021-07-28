@@ -30,7 +30,7 @@ export function CharactersList() {
     const [noResults, setNoResults] = useState(false);
 
     const getCharactersEndpoint = `/v1/public/characters?limit=24&offset=${pageOffest}0&ts=${time}&apikey=${publicKey}&hash=${hash}`;
-    const searchCharactersEndpoint = `/v1/public/characters?limit=24&offset=${pageOffest}0&${search ? `nameStartsWith=${search}` : ''}&ts=${time}&apikey=${publicKey}&hash=${hash}`;
+    const searchCharactersEndpoint = `/v1/public/characters?limit=24&offset=${search ? 0 : pageOffest}0&${search ? `nameStartsWith=${search}` : ''}&ts=${time}&apikey=${publicKey}&hash=${hash}`;
 
     useEffect(() => {
         const getCharacters = async () => {
