@@ -8,12 +8,38 @@ export const Container = styled.div`
 
 export const List = styled.div`
   width: 86.5%;
+`;
 
-  h1 {
+export const ListHeader = styled.div`
+  display: flex;
+  align-items: flex-start;
+  justify-content: space-between;
+
+  > h1 {
     font-family: 'Oswald';
     color: #000;
     font-weight: 500;
     margin-bottom: 20px;
+  }
+`;
+
+export const SearchInput = styled.div`
+  display: flex;
+  align-items: center;
+  border: 2px solid #000;
+  width: 300px;
+  height: 30px;
+  border-radius: 25px;
+  padding: 20px;
+
+  > input {
+    border: none;
+    width: 100%;
+  }
+
+  > svg {
+    cursor: pointer;
+    color: #000;
   }
 `;
 

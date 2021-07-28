@@ -1,24 +1,41 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, KeyboardEvent } from 'react';
+import { FaSearch } from 'react-icons/fa';
 import { time, publicKey, hash} from '../../services/authorization';
-import api from '../../services/api';
 import { Pagination } from './component/Pagination';
 import { ModalComponent } from './component/Modal';
 import { CharactersInterface } from './component/types';
+import api from '../../services/api';
 
-import { Container, List, ListContainer, CardContainer, Card, CardFooter } from './style';
+import { 
+    Container, 
+    List, 
+    ListHeader, 
+    ListContainer,
+    CardContainer, 
+    Card, 
+    CardFooter, 
+    SearchInput } from './style';
 
 export function CharactersList() {
     const [characters, setCharacters] = useState<CharactersInterface[]>([]);
     const [totalCharacters, setTotalCharacters] = useState(0);
     const [pageOffest, setPageOffest] = useState(0);
+    const [search, setSearch] = useState('');
     const [modalIsOpen, setIsOpen] = useState(false);
     const [characterDetails, setCharacterDetails] = useState<CharactersInterface>();
 
+    const getCharactersEndpoint = `/v1/public/characters?limit=24&offset=${pageOffest}0&ts=${time}&apikey=${publicKey}&hash=${hash}`;
+    const searchCharactersEndpoint = `/v1/public/characters?limit=24&offset=${pageOffest}0&${search ? `nameStartsWith=${search}` : ''}&ts=${time}&apikey=${publicKey}&hash=${hash}`;
+
     useEffect(() => {
         const getCharacters = async () => {
-        const res = await api.get(`/v1/public/characters?limit=24&offset=${pageOffest}0&ts=${time}&apikey=${publicKey}&hash=${hash}`);
-        setCharacters(res.data.data.results);
-        setTotalCharacters(res.data.data.total);
+            try {
+                const res = await api.get(getCharactersEndpoint);
+                setCharacters(res.data.data.results);
+                setTotalCharacters(res.data.data.total);
+            } catch (error) {
+                console.log(error.response?.data?.message || error.toString());
+            }
         }
         getCharacters();  
     }, [pageOffest]);
@@ -32,10 +49,37 @@ export function CharactersList() {
         setIsOpen(false);
     }
 
+     async function handleSearch() {
+         try {
+            const res = await api.get(searchCharactersEndpoint);
+            setCharacters(res.data.data.results);
+            setTotalCharacters(res.data.data.total);
+         } catch (error) {
+            console.log(error.response?.data?.message || error.toString());
+         }
+    }
+
+    const handleKeyDown = (event: KeyboardEvent<HTMLDivElement>) => {
+        if (event.key === 'Enter') {
+            handleSearch();
+        }
+    };
+
     return (
         <Container>
             <List>
-                <h1>LISTA DE PERSONAGENS DA MARVEL</h1>
+                <ListHeader>
+                    <h1>LISTA DE PERSONAGENS DA MARVEL</h1>
+                    <SearchInput>
+                        <input 
+                            placeholder="Procurar personagem por nome" 
+                            value={search}
+                            onChange={(e) => setSearch(e.target.value)}
+                            onKeyDown={handleKeyDown}
+                        />
+                        <FaSearch onClick={() => handleSearch()} />
+                    </SearchInput>
+                </ListHeader>
                 <ListContainer>
                     {characters.map((character) => (
                         <CardContainer key={character.id} onClick={() => openModal(character)}>
