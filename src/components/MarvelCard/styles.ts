@@ -5,7 +5,7 @@ export const Container = styled.div`
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    margin-top: 80px;
+    margin: 80px 0 160px 0;
 
     > h1 {
         color: #000;
@@ -54,5 +54,28 @@ export const Container = styled.div`
         > h1 {
             font-size: 10vw;
         }
+    }
+`;
+    
+export const Title = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Oswald';
+    font-size: 22px;
+    background: red;
+    width: 300px;
+    height: 245px;
+    align-self: flex-start;
+    position: absolute;
+    margin-top: 840px;
+    margin-left: 200px;
+
+    @media (max-width: 1204px) {
+        align-self: unset;
+        position: absolute;
+        margin-top: 750px;
+        margin-left: 0;
     }
 `;
