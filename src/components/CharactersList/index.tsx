@@ -31,8 +31,8 @@ export function CharactersList() {
         const getCharacters = async () => {
             try {
                 const res = await api.get(getCharactersEndpoint);
-                setCharacters(res.data.data.results);
-                setTotalCharacters(res.data.data.total);
+                    setCharacters(res.data.data.results);
+                    setTotalCharacters(res.data.data.total);
             } catch (error) {
                 console.log(error.response?.data?.message || error.toString());
             }
@@ -52,8 +52,10 @@ export function CharactersList() {
      async function handleSearch() {
          try {
             const res = await api.get(searchCharactersEndpoint);
-            setCharacters(res.data.data.results);
-            setTotalCharacters(res.data.data.total);
+            if(res.data.data.results.length !== 0) {
+                setCharacters(res.data.data.results);
+                setTotalCharacters(res.data.data.total);
+            }
          } catch (error) {
             console.log(error.response?.data?.message || error.toString());
          }
