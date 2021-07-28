@@ -27,17 +27,41 @@ interface CharactersInterface {
 
 export function Slider() {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
-  const [characters, setCharacters] = useState<CharactersInterface[]>([]);
+  const [characters, setCharacters] = useState<CharactersInterface[]>();
   const [loading, setLoading] = useState(false);
 
-  const getCharactersEndpoint = `/v1/public/characters?ts=${time}&apikey=${publicKey}&hash=${hash}`;
+  const getSpeiderMan = `/v1/public/characters?ts=${time}&name=Spider-Man (Peter Parker)&apikey=${publicKey}&hash=${hash}`;
+  const getBlackWidow = `/v1/public/characters?ts=${time}&name=Black Widow&apikey=${publicKey}&hash=${hash}`;
+  const getHulk = `/v1/public/characters?ts=${time}&name=Hulk&apikey=${publicKey}&hash=${hash}`;
+  const getThor = `/v1/public/characters?ts=${time}&name=Thor&apikey=${publicKey}&hash=${hash}`;
+  const getBlackPanther = `/v1/public/characters?ts=${time}&name=Black Panther&apikey=${publicKey}&hash=${hash}`;
+  const getThanos = `/v1/public/characters?ts=${time}&name=Thanos&apikey=${publicKey}&hash=${hash}`;
+  const getIronMan = `/v1/public/characters?ts=${time}&name=Iron Man&apikey=${publicKey}&hash=${hash}`;
 
   useEffect(() => {
     const getCharacters = async () => {
       try {
         setLoading(true);
-        const res = await api.get(getCharactersEndpoint);
-        setCharacters(res.data.data.results)
+        const [spiderMan, blackWidow, hulk, thor, blackPanther, thanos, ironMan] = await Promise.all([
+          api.get(getSpeiderMan),
+          api.get(getBlackWidow),
+          api.get(getHulk),
+          api.get(getThor),
+          api.get(getBlackPanther),
+          api.get(getThanos),
+          api.get(getIronMan),
+        ]);
+        
+        const charactersArr: Array<CharactersInterface> = []
+        charactersArr.push(spiderMan.data.data.results[0]);
+        charactersArr.push(blackWidow.data.data.results[0]);
+        charactersArr.push(hulk.data.data.results[0]);
+        charactersArr.push(thor.data.data.results[0]);
+        charactersArr.push(blackPanther.data.data.results[0]);
+        charactersArr.push(thanos.data.data.results[0]);
+        charactersArr.push(ironMan.data.data.results[0]);
+
+        setCharacters(charactersArr);
         setLoading(false);
       } catch (error) {
         console.log(error.response?.data?.message || error.toString());
@@ -45,7 +69,15 @@ export function Slider() {
       }
     }
     getCharacters();  
-  }, [getCharactersEndpoint]);
+  }, [
+    getSpeiderMan,
+    getBlackWidow, 
+    getHulk, 
+    getThor, 
+    getBlackPanther,
+    getThanos,
+    getIronMan
+  ]);
 
   const decreaseSlide = (slide: number, setSlide: Function) => {
     slide !== 0 && setSlide(slide - 1);
@@ -64,26 +96,24 @@ export function Slider() {
       <div>
         <SliderHeader>
         <h1>PERSONAGENS EM DESTAQUE</h1>
-        
-            
 
       <ButtonsWrapper>
             <PrevButton
               currentSlide={currentSlide}
-              slidesLength={characters.length}
+              slidesLength={characters?.length}
               onClick={() => decreaseSlide(currentSlide, setCurrentSlide)}
             ><FaChevronLeft color="#fff" /></PrevButton>
 
             <NextButton
               currentSlide={currentSlide}
-              slidesLength={characters.length}
-              onClick={() => increaseSlide(currentSlide, setCurrentSlide, characters.length)}
+              slidesLength={characters?.length}
+              onClick={() => increaseSlide(currentSlide, setCurrentSlide, characters?.length as number)}
             ><FaChevronRight color="#fff"  /></NextButton>
-          </ButtonsWrapper>
+        </ButtonsWrapper>
         </SliderHeader>
         {!loading ? (
         <SliderContainer>
-          {characters.map((character) => (
+          {characters?.map((character) => (
             <SlideWrapper key={character.id} currentSlide={currentSlide}>
               <Slide>
                 <div className="title" />
