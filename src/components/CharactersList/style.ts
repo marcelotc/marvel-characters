@@ -67,9 +67,12 @@ export const ListContainer = styled.div`
 `;
 
 export const CardContainer = styled.div`
+  background: #000;
   cursor: pointer;
   transition: filter .2s ease;
-  
+  margin-bottom: 20px;
+  box-shadow: 0px 0px 5px 0px #000;
+
   &:hover {
     filter: brightness(70%);
   }
