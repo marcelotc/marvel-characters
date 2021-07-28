@@ -72,7 +72,7 @@ export function CharactersList() {
                     <h1>LISTA DE PERSONAGENS DA MARVEL</h1>
                     <SearchInput>
                         <input 
-                            placeholder="Procurar personagem por nome" 
+                            placeholder="Procurar personagem por nome..." 
                             value={search}
                             onChange={(e) => setSearch(e.target.value)}
                             onKeyDown={handleKeyDown}

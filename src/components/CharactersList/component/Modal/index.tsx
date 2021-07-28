@@ -3,20 +3,6 @@ import { Container, Content, Deitails } from './styles';
 import { FaTimes } from 'react-icons/fa';
 import { CharactersInterface } from '../../component/types';
 import './styles.css';
-
-const customStyles = {
-    content: {
-      top: '50%',
-      left: '50%',
-      right: 'auto',
-      bottom: 'auto',
-      marginRight: '-50%',
-      transform: 'translate(-50%, -50%)',
-      width: '50%',
-      height: '80%',
-    },
-};
-
 interface ModalInterface {
   modalIsOpen: boolean;
   closeModal: () => void;
@@ -29,7 +15,7 @@ export function ModalComponent({ modalIsOpen, closeModal, characterDetails }: Mo
       <Modal
         isOpen={modalIsOpen}
         onRequestClose={closeModal}
-        style={customStyles}
+        className="modal-responsive"
       >
         <Content>
           <FaTimes onClick={closeModal} />

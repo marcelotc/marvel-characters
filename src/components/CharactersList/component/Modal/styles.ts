@@ -1,14 +1,14 @@
 import styled from 'styled-components';
 
-export const Container = styled.div`
-    
-`;
+export const Container = styled.div``;
 
 export const Content = styled.div`
     display: flex;
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    overflow-y: auto;
+    height: 100%;
 
     > h5 {
         font-size: 35px;
@@ -19,7 +19,7 @@ export const Content = styled.div`
     > svg {
         color: #000;
         cursor: pointer;
-        font-size: 30px;
+        font-size: 40px;
         align-self: flex-end;
         transition: color .2s ease;
 

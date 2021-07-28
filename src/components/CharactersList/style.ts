@@ -20,6 +20,13 @@ export const ListHeader = styled.div`
     color: #000;
     font-weight: 500;
     margin-bottom: 20px;
+    text-align: center;
+  }
+  
+  @media (max-width: 875px) {
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
   }
 `;
 
@@ -40,6 +47,10 @@ export const SearchInput = styled.div`
   > svg {
     cursor: pointer;
     color: #000;
+  }
+
+  @media (max-width: 875px) {
+    margin-bottom: 30px;
   }
 `;
 

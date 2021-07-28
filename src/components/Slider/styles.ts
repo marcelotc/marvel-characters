@@ -14,6 +14,7 @@ export const Container = styled.div`
   > div {
     margin-top: 160px;
     width: 88%;
+    padding-bottom: 135px;
   }
 
   background: #000;
