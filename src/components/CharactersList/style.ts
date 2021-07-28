@@ -66,6 +66,13 @@ export const ListContainer = styled.div`
   }
 `;
 
+export const NoResults = styled.div`
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #000;
+`;
+
 export const CardContainer = styled.div`
   background: #000;
   cursor: pointer;

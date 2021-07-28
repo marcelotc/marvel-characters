@@ -1,7 +1,8 @@
 import { useEffect, useState } from 'react';
 import api from '../../services/api';
 import { time, publicKey, hash} from '../../services/authorization';
-import {  FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 
 import {
   Container,
@@ -23,14 +24,25 @@ interface CharactersInterface {
   }
 }
 
+
 export function Slider() {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [characters, setCharacters] = useState<CharactersInterface[]>([]);
+  const [loading, setLoading] = useState(false);
+
+  const getCharactersEndpoint = `/v1/public/characters?ts=${time}&apikey=${publicKey}&hash=${hash}`;
 
   useEffect(() => {
     const getCharacters = async () => {
-      const res = await api.get(`/v1/public/characters?ts=${time}&apikey=${publicKey}&hash=${hash}`);
-      setCharacters(res.data.data.results)
+      try {
+        setLoading(true);
+        const res = await api.get(getCharactersEndpoint);
+        setCharacters(res.data.data.results)
+        setLoading(false);
+      } catch (error) {
+        console.log(error.response?.data?.message || error.toString());
+        setLoading(false);
+      }
     }
     getCharacters();  
   }, []);
@@ -52,7 +64,10 @@ export function Slider() {
       <div>
         <SliderHeader>
         <h1>PERSONAGENS EM DESTAQUE</h1>
-        <ButtonsWrapper>
+        
+            
+
+      <ButtonsWrapper>
             <PrevButton
               currentSlide={currentSlide}
               slidesLength={characters.length}
@@ -66,6 +81,7 @@ export function Slider() {
             ><FaChevronRight color="#fff"  /></NextButton>
           </ButtonsWrapper>
         </SliderHeader>
+        {!loading ? (
         <SliderContainer>
           {characters.map((character) => (
             <SlideWrapper key={character.id} currentSlide={currentSlide}>
@@ -77,7 +93,13 @@ export function Slider() {
               </Slide>
             </SlideWrapper>
           ))}
-        </SliderContainer>
+        </SliderContainer> ) : (
+          <SkeletonTheme color="#222" highlightColor="red">
+            <div style={{marginTop: '30px'}}>
+              <Skeleton count={6} duration={2} />
+            </div>
+          </SkeletonTheme> 
+        )}
         </div>
       </Container>
   );

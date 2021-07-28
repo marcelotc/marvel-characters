@@ -4,6 +4,7 @@ import { time, publicKey, hash} from '../../services/authorization';
 import { Pagination } from './component/Pagination';
 import { ModalComponent } from './component/Modal';
 import { CharactersInterface } from './component/types';
+import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import api from '../../services/api';
 
 import { 
@@ -12,6 +13,7 @@ import {
     ListHeader, 
     ListContainer,
     CardContainer, 
+    NoResults,
     Card, 
     CardFooter, 
     SearchInput } from './style';
@@ -23,6 +25,8 @@ export function CharactersList() {
     const [search, setSearch] = useState('');
     const [modalIsOpen, setIsOpen] = useState(false);
     const [characterDetails, setCharacterDetails] = useState<CharactersInterface>();
+    const [loading, setLoading] = useState(false);
+    const [noResults, setNoResults] = useState(false);
 
     const getCharactersEndpoint = `/v1/public/characters?limit=24&offset=${pageOffest}0&ts=${time}&apikey=${publicKey}&hash=${hash}`;
     const searchCharactersEndpoint = `/v1/public/characters?limit=24&offset=${pageOffest}0&${search ? `nameStartsWith=${search}` : ''}&ts=${time}&apikey=${publicKey}&hash=${hash}`;
@@ -30,11 +34,14 @@ export function CharactersList() {
     useEffect(() => {
         const getCharacters = async () => {
             try {
+                setLoading(true);
                 const res = await api.get(getCharactersEndpoint);
                     setCharacters(res.data.data.results);
                     setTotalCharacters(res.data.data.total);
+                    setLoading(false);
             } catch (error) {
                 console.log(error.response?.data?.message || error.toString());
+                setLoading(false);
             }
         }
         getCharacters();  
@@ -51,13 +58,19 @@ export function CharactersList() {
 
      async function handleSearch() {
          try {
+            setLoading(true);
             const res = await api.get(searchCharactersEndpoint);
             if(res.data.data.results.length !== 0) {
                 setCharacters(res.data.data.results);
                 setTotalCharacters(res.data.data.total);
+                setLoading(false);
+                setNoResults(false);
+            } else {
+                setNoResults(true);
             }
          } catch (error) {
             console.log(error.response?.data?.message || error.toString());
+            setLoading(false);
          }
     }
 
@@ -66,6 +79,37 @@ export function CharactersList() {
             handleSearch();
         }
     };
+
+    function renderList() {
+        if(!loading) {
+            return (
+                <ListContainer>
+                    {characters.map((character) => (
+                        <CardContainer key={character.id} onClick={() => openModal(character)}>
+                            <Card>
+                                <div className="title" />
+                                <p>MOVIES</p>
+                                <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} />
+                            </Card>
+                            <CardFooter>
+                                <p>{character.name}</p>
+                            </CardFooter>
+                        </CardContainer>
+                        ))}
+                </ListContainer>)
+            } else if(noResults) {
+                return (
+                    <NoResults>Nenhum resultado encontrado</NoResults>
+                 );
+            } else {
+                return (
+                    <SkeletonTheme color="#222" highlightColor="red">
+                        <div style={{marginTop: '30px'}}>
+                        <Skeleton count={10} duration={2} height={10} />
+                        </div>
+                    </SkeletonTheme>)
+        }
+}
 
     return (
         <Container>
@@ -82,25 +126,13 @@ export function CharactersList() {
                         <FaSearch onClick={() => handleSearch()} />
                     </SearchInput>
                 </ListHeader>
-                <ListContainer>
-                    {characters.map((character) => (
-                        <CardContainer key={character.id} onClick={() => openModal(character)}>
-                            <Card>
-                                <div className="title" />
-                                <p>MOVIES</p>
-                                <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} />
-                            </Card>
-                            <CardFooter>
-                                <p>{character.name}</p>
-                            </CardFooter>
-                        </CardContainer>
-                        ))}
-                 </ListContainer>
+                {renderList()}
+                {!noResults ? (
                  <Pagination 
                     totalCharacters={totalCharacters} 
                     characterPerPage={characters.length}
                     setPageOffest={setPageOffest}
-                 />
+                 />) : ''}
             </List>
             <ModalComponent 
                 modalIsOpen={modalIsOpen}
