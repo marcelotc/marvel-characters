@@ -4,7 +4,6 @@ import styled from 'styled-components';
 export const Container = styled.div`
   position: relative;
   background: #000;
-  height: 611px;
 
   > img {
     width: 100%;
