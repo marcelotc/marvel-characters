@@ -38,7 +38,7 @@ export function Footer() {
        <Blog>
         <h4>Última do blog</h4>
         <div>
-          <img src={blogImage} alt="Blog image" />
+          <img src={blogImage} alt="Imagem do blog" />
           <p>Captain Marvel Challenge invadiu <br /> o tape vermelho do oscar</p>
         </div>
         <p>Continuar lendo</p>

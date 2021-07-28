@@ -11,7 +11,7 @@ interface PaginationProps {
 export function Pagination({ totalCharacters, characterPerPage, setPageOffest }: PaginationProps) {
   const [currentPage, setcurrentPage] = useState(1);
 
-  const [pageNumberLimit, setpageNumberLimit] = useState(5);
+  const pageNumberLimit = 5;
   const [maxPageNumberLimit, setmaxPageNumberLimit] = useState(5);
   const [minPageNumberLimit, setminPageNumberLimit] = useState(0);
 
@@ -53,7 +53,7 @@ export function Pagination({ totalCharacters, characterPerPage, setPageOffest }:
     setcurrentPage(currentPage - 1);
     setPageOffest(currentPage - 2);
 
-    if ((currentPage - 1) % pageNumberLimit == 0) {
+    if ((currentPage - 1) % pageNumberLimit === 0) {
       setmaxPageNumberLimit(maxPageNumberLimit - pageNumberLimit);
       setminPageNumberLimit(minPageNumberLimit - pageNumberLimit);
     }
@@ -74,7 +74,7 @@ export function Pagination({ totalCharacters, characterPerPage, setPageOffest }:
         <Container>
             <button
                 onClick={handlePrevbtn}
-                disabled={currentPage == pages[0] 
+                disabled={currentPage === pages[0] 
                 ? true : false}><FaChevronLeft />
             </button>
             {pageDecrementBtn}
@@ -82,7 +82,7 @@ export function Pagination({ totalCharacters, characterPerPage, setPageOffest }:
             {pageIncrementBtn}
             <button
                 onClick={handleNextbtn}
-                disabled={currentPage == pages[pages.length - 1] 
+                disabled={currentPage === pages[pages.length - 1] 
                 ? true : false}><FaChevronRight />
             </button>
         </Container>

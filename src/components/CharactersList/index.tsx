@@ -45,7 +45,7 @@ export function CharactersList() {
             }
         }
         getCharacters();  
-    }, [pageOffest]);
+    }, [pageOffest, getCharactersEndpoint]);
 
     function openModal(character: CharactersInterface) {
         setIsOpen(true);
@@ -89,7 +89,10 @@ export function CharactersList() {
                             <Card>
                                 <div className="title" />
                                 <p>MOVIES</p>
-                                <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} />
+                                <img 
+                                    src={`${character.thumbnail.path}.${character.thumbnail.extension}`} 
+                                    alt="Personagem"
+                                />
                             </Card>
                             <CardFooter>
                                 <p>{character.name}</p>

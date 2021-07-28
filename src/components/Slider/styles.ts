@@ -1,6 +1,6 @@
 import styled from 'styled-components';
 
-interface Slide {
+interface SlideProps {
     currentSlide?: number;
     slidesLength?: number;
 }
@@ -60,7 +60,7 @@ export const ButtonsWrapper = styled.div`
   margin-right: 1px;
 `;
 
-export const NextButton = styled.div<Slide>`
+export const NextButton = styled.div<SlideProps>`
   display: flex;
   align-items: center;
   border: 3px solid #fff;
@@ -100,7 +100,7 @@ export const SliderContainer = styled.div`
   }
 `;
 
-export const SlideWrapper = styled.div<Slide>`
+export const SlideWrapper = styled.div<SlideProps>`
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -121,7 +121,7 @@ export const SlideWrapper = styled.div<Slide>`
   }
 `;
 
-export const Slide = styled.div<Slide>`
+export const Slide = styled.div<SlideProps>`
  display: flex;
  align-items: flex-start;
  justify-content: center;

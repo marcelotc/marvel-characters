@@ -15,7 +15,7 @@ export function Header() {
   return (
     <Container>
         <div>
-            <img src={logoMarvel} />
+            <img src={logoMarvel} alt="Logo marvel" />
             <FaBars onClick={() => setHide(!hide)} />
         </div>
         <Menu>

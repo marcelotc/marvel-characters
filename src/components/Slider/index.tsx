@@ -45,7 +45,7 @@ export function Slider() {
       }
     }
     getCharacters();  
-  }, []);
+  }, [getCharactersEndpoint]);
 
   const decreaseSlide = (slide: number, setSlide: Function) => {
     slide !== 0 && setSlide(slide - 1);
@@ -88,7 +88,10 @@ export function Slider() {
               <Slide>
                 <div className="title" />
                 <p>MOVIES</p>
-                <img src={`${character.thumbnail.path}.${character.thumbnail.extension}`} />
+                <img 
+                  src={`${character.thumbnail.path}.${character.thumbnail.extension}`} 
+                  alt="Personagens"
+                />
                 <h4>{character.name}</h4>
               </Slide>
             </SlideWrapper>
