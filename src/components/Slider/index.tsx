@@ -3,6 +3,7 @@ import api from '../../services/api';
 import { time, publicKey, hash} from '../../services/authorization';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
+import { Fade } from 'react-reveal';
 
 import {
   Container,
@@ -23,7 +24,6 @@ interface CharactersInterface {
     path: string;
   }
 }
-
 
 export function Slider() {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
@@ -94,46 +94,48 @@ export function Slider() {
   return (
     <Container>
       <div>
-        <SliderHeader>
-        <h1>PERSONAGENS EM DESTAQUE</h1>
+          <SliderHeader>
+          <h1>PERSONAGENS EM DESTAQUE</h1>
 
-      <ButtonsWrapper>
-            <PrevButton
-              currentSlide={currentSlide}
-              slidesLength={characters?.length}
-              onClick={() => decreaseSlide(currentSlide, setCurrentSlide)}
-            ><FaChevronLeft color="#fff" /></PrevButton>
+          <ButtonsWrapper>
+              <PrevButton
+                currentSlide={currentSlide}
+                slidesLength={characters?.length}
+                onClick={() => decreaseSlide(currentSlide, setCurrentSlide)}
+              ><FaChevronLeft color="#fff" /></PrevButton>
 
-            <NextButton
-              currentSlide={currentSlide}
-              slidesLength={characters?.length}
-              onClick={() => increaseSlide(currentSlide, setCurrentSlide, characters?.length as number)}
-            ><FaChevronRight color="#fff"  /></NextButton>
-        </ButtonsWrapper>
-        </SliderHeader>
-        {!loading ? (
-        <SliderContainer>
-          {characters?.map((character) => (
-            <SlideWrapper key={character.id} currentSlide={currentSlide}>
-              <Slide>
-                <div className="title" />
-                <p>MOVIES</p>
-                <img 
-                  src={`${character.thumbnail.path}.${character.thumbnail.extension}`} 
-                  alt="Personagens"
-                />
-                <h4>{character.name}</h4>
-              </Slide>
-            </SlideWrapper>
-          ))}
-        </SliderContainer> ) : (
-          <SkeletonTheme color="#222" highlightColor="red">
-            <div style={{marginTop: '30px'}}>
-              <Skeleton count={6} duration={2} />
-            </div>
-          </SkeletonTheme> 
-        )}
-        </div>
+              <NextButton
+                currentSlide={currentSlide}
+                slidesLength={characters?.length}
+                onClick={() => increaseSlide(currentSlide, setCurrentSlide, characters?.length as number)}
+              ><FaChevronRight color="#fff"  /></NextButton>
+          </ButtonsWrapper>
+          </SliderHeader>
+          {!loading ? (
+          <Fade bottom>
+          <SliderContainer>
+            {characters?.map((character) => (
+              <SlideWrapper key={character.id} currentSlide={currentSlide}>
+                <Slide>
+                  <div className="title" />
+                  <p>MOVIES</p>
+                  <img 
+                    src={`${character.thumbnail.path}.${character.thumbnail.extension}`} 
+                    alt="Personagens"
+                  />
+                  <h4>{character.name}</h4>
+                </Slide>
+              </SlideWrapper>
+            ))}
+          </SliderContainer>
+          </Fade> ) : (
+            <SkeletonTheme color="#222" highlightColor="red">
+              <div style={{marginTop: '30px'}}>
+                <Skeleton count={6} duration={2} />
+              </div>
+            </SkeletonTheme> 
+          )}
+          </div>
       </Container>
   );
 }

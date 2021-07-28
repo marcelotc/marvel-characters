@@ -1,10 +1,14 @@
 import { Container, Title } from './style'
 import banner from '../../assets/banner.jpg';
+import { Fade } from 'react-reveal';
 
 export function Banner() {
     return (
         <Container>
-            <img src={banner} alt="Avengers banner" />
+            <Fade duration={3000}>
+                <img src={banner} alt="Avengers banner" />
+            </Fade>
+                <Fade duration={2000}>
                 <Title>
                     <div>
                         <h1>CONHEÇA</h1>
@@ -12,6 +16,7 @@ export function Banner() {
                         <h1>PERSONAGENS</h1>
                     </div>
                 </Title>
+                </Fade>
         </Container>
     )
 }
