@@ -84,25 +84,23 @@ export function CharactersList() {
     function renderList() {
         if(!loading) {
             return (
-                <Fade>
-                    <ListContainer>
-                        {characters.map((character) => (
-                            <CardContainer key={character.id} onClick={() => openModal(character)}>
-                                <Card>
-                                    <div className="title" />
-                                    <p>MOVIES</p>
-                                    <img 
-                                        src={`${character.thumbnail.path}.${character.thumbnail.extension}`} 
-                                        alt="Personagem"
-                                    />
-                                </Card>
-                                <CardFooter>
-                                    <p>{character.name}</p>
-                                </CardFooter>
-                            </CardContainer>
-                            ))}
-                    </ListContainer>
-                </Fade>)
+                <ListContainer>
+                    {characters.map((character) => (
+                        <CardContainer key={character.id} onClick={() => openModal(character)}>
+                            <Card>
+                                <div className="title" />
+                                <p>MOVIES</p>
+                                <img 
+                                    src={`${character.thumbnail.path}.${character.thumbnail.extension}`} 
+                                    alt="Personagem"
+                                />
+                            </Card>
+                            <CardFooter>
+                                <p>{character.name}</p>
+                            </CardFooter>
+                        </CardContainer>
+                        ))}
+                </ListContainer>)
             } else if(noResults) {
                 return (
                     <NoResults>Nenhum resultado encontrado</NoResults>

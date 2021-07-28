@@ -8,15 +8,15 @@ export function Banner() {
             <Fade duration={3000}>
                 <img src={banner} alt="Avengers banner" />
             </Fade>
-                <Fade duration={2000}>
                 <Title>
-                    <div>
-                        <h1>CONHEÇA</h1>
-                        <h1>NOSSOS</h1>
-                        <h1>PERSONAGENS</h1>
-                    </div>
+                    <Fade duration={2000}>
+                        <div>
+                            <h1>CONHEÇA</h1>
+                            <h1>NOSSOS</h1>
+                            <h1>PERSONAGENS</h1>
+                        </div>
+                    </Fade>
                 </Title>
-                </Fade>
         </Container>
     )
 }
