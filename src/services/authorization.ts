@@ -1,7 +1,7 @@
 import md5 from 'md5';
 
-const privateKey = '2ab5449f40643a3688303c66d80232e0026ffde1';
-export const publicKey = 'bc9835768982ec80ae7be4fc38fb0d31';
+const privateKey = '5e524998a699636014a2a3aa4de9fa4a58079064';
+export const publicKey = '13280928810462417a62f705124ce69f';
 export const time = Number(new Date());
 
 export const hash = md5(time + privateKey + publicKey);
