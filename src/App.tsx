@@ -4,6 +4,7 @@ import { Banner } from './components/Banner';
 import { CharactersList } from './components/CharactersList';
 import { MarvelCard } from './components/MarvelCard';
 import { NewsLetter } from './components/NewsLetter';
+import { Footer } from './components/Footer';
 
 function App() {
 
@@ -15,6 +16,7 @@ function App() {
      <CharactersList />
      <MarvelCard />
      <NewsLetter />
+     <Footer />
     </>
   );
 }
