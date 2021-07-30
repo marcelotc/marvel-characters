@@ -15,7 +15,7 @@ export const ListHeader = styled.div`
   align-items: flex-start;
   justify-content: space-between;
 
-  > h1 {
+  > h2 {
     font-family: 'Oswald';
     color: #000;
     font-weight: 500;
@@ -58,7 +58,6 @@ export const ListContainer = styled.div`
   display: flex;
   flex-wrap: wrap;
   align-items: center;
-  justify-content: space-between;
   align-content: center; 
 
   @media (max-width: 393px) {
@@ -84,7 +83,6 @@ export const CardContainer = styled.div`
   }
 
   @media (max-width: 990px) {
-    margin: 0 15px 30px 15px;
     width: calc(50% - 30px);
   }
 
@@ -104,7 +102,7 @@ export const Card = styled.div`
  color: #fff;
  border-bottom: 5px solid red;
 
- .title {
+ .label-movies {
     position: absolute;
     text-align: center;
     color: white;
@@ -113,7 +111,7 @@ export const Card = styled.div`
     margin-top: 20px;
 }
 
-.title:before{
+.label-movies:before{
     content: "";
     position: absolute;
     left: 0;
@@ -123,7 +121,7 @@ export const Card = styled.div`
     border-bottom: 15px solid #000;
     border-left: 15px solid transparent;
 }
-.title:after {
+.label-movies:after {
     content: "";
     position: absolute;
     left: 0;
@@ -133,7 +131,7 @@ export const Card = styled.div`
     border-right: 15px solid transparent;
 }
 
-.title:after {
+.label-movies:after {
     bottom: auto;
     top: 100%;
     border-bottom: none;
@@ -143,6 +141,7 @@ export const Card = styled.div`
 > p {
     position: absolute;
     margin-top: 8px;
+    text-transform: capitalize;
 }
 
  > img {

@@ -88,8 +88,8 @@ export function CharactersList() {
                     {characters.map((character) => (
                         <CardContainer key={character.id} onClick={() => openModal(character)}>
                             <Card>
-                                <div className="title" />
-                                <p>MOVIES</p>
+                                <span className="label-movies" />
+                                <p>movies</p>
                                 <img 
                                     src={`${character.thumbnail.path}.${character.thumbnail.extension}`} 
                                     alt="Personagem"
@@ -119,7 +119,7 @@ export function CharactersList() {
         <Container>
             <List>
                 <ListHeader>
-                    <h1>LISTA DE PERSONAGENS DA MARVEL</h1>
+                    <h2>LISTA DE PERSONAGENS DA MARVEL</h2>
                     <SearchInput>
                         <input 
                             placeholder="Procurar personagem por nome..." 

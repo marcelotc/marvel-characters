@@ -86,6 +86,7 @@ export const Title = styled.div`
 
     h1 {
         font: normal normal bold 62px/78px Oswald;
+        max-width: 75%;
     }
 
     @media (max-width: 1204px) {
@@ -95,5 +96,9 @@ export const Title = styled.div`
     @media (max-width: 435px) {
         font-size: 2vw;
         width: 95%;
+
+        > h1 {
+            font-size: 15vw;
+        }
     }
 `;

@@ -6,12 +6,12 @@ export function MarvelCard() {
     return (
         <Container>
             <Fade bottom>
-            <h1>MARVEL MASTERCARD</h1>
-            <h5>Desbloqueie seus super poderes</h5>
-            <img src={marvelCard} alt="Marvel Mastercard" />
+                <h1>MARVEL MASTERCARD</h1>
+                <label>Desbloqueie seus super poderes</label>
+                <img src={marvelCard} alt="Marvel Mastercard" />
             </Fade>
-            <div className="signUp">CADASTRE-SE AGORA</div>
-            <div className="howWorks">ENTENDA COMO FUNCIONA</div>
+            <a className="signUp">CADASTRE-SE AGORA</a>
+            <a className="howWorks">ENTENDA COMO FUNCIONA</a>
         </Container>
     )
 }

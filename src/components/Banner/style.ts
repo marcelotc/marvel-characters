@@ -23,6 +23,10 @@ export const Title = styled.div`
     font-family: 'Oswald';
     text-align: left;
     text-shadow: 2px 2px 10px #000;
+
+    > h1 {
+      max-width: 50%;
+    }
   }
 
   @media (max-width: 625px) {
@@ -33,6 +37,11 @@ export const Title = styled.div`
     > div {
       text-align: center;
       font-size: 4vw;
+
+      > h1 {
+        text-align: center;
+        max-width: unset;
+      }
     }
   }
 `;

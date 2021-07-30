@@ -35,7 +35,7 @@ export const SliderHeader = styled.div`
     justify-content: space-between;
     width: 100%;
 
-    h1 {
+    > h2 {
       font-family: 'Oswald';
       color: #fff;
       font-weight: 500;
@@ -45,7 +45,7 @@ export const SliderHeader = styled.div`
  @media (max-width: 625px) {
     flex-direction: column;
 
-    h1 {
+    > h2 {
         text-align: center;
         margin-bottom: 10px;
     }
@@ -145,7 +145,7 @@ export const Slide = styled.div<SlideProps>`
  }
 }
 
- .title {
+ .label-movies {
     position: absolute;
     text-align: center;
     color: white;
@@ -154,7 +154,7 @@ export const Slide = styled.div<SlideProps>`
     margin-top: 20px;
 }
 
-.title:before{
+.label-movies:before{
     content: "";
     position: absolute;
     left: 0;
@@ -164,7 +164,7 @@ export const Slide = styled.div<SlideProps>`
     border-bottom: 15px solid #000;
     border-left: 15px solid transparent;
 }
-.title:after {
+.label-movies:after {
     content: "";
     position: absolute;
     left: 0;
@@ -174,7 +174,7 @@ export const Slide = styled.div<SlideProps>`
     border-right: 15px solid transparent;
 }
 
-.title:after {
+.label-movies:after {
     bottom: auto;
     top: 100%;
     border-bottom: none;
@@ -184,6 +184,7 @@ export const Slide = styled.div<SlideProps>`
 > p {
     position: absolute;
     margin-top: 8px;
+    text-transform: capitalize;
 }
 
  > h4 {

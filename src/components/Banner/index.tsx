@@ -11,9 +11,7 @@ export function Banner() {
                 <Title>
                     <Fade duration={2000}>
                         <div>
-                            <h1>CONHEÇA</h1>
-                            <h1>NOSSOS</h1>
-                            <h1>PERSONAGENS</h1>
+                            <h1>CONHEÇA NOSSOS PERSONAGENS</h1>
                         </div>
                     </Fade>
                 </Title>

@@ -95,7 +95,7 @@ export function Slider() {
     <Container>
       <div>
           <SliderHeader>
-          <h1>PERSONAGENS EM DESTAQUE</h1>
+          <h2>PERSONAGENS EM DESTAQUE</h2>
 
           <ButtonsWrapper>
               <PrevButton
@@ -117,8 +117,8 @@ export function Slider() {
             {characters?.map((character) => (
               <SlideWrapper key={character.id} currentSlide={currentSlide}>
                 <Slide>
-                  <div className="title" />
-                  <p>MOVIES</p>
+                  <span className="label-movies" />
+                  <p>movies</p>
                   <div className="characterImg">
                     <img 
                       src={`${character.thumbnail.path}.${character.thumbnail.extension}`} 

@@ -13,7 +13,7 @@ export const Container = styled.div`
         font-size: 50px;
     }
 
-    > h5 {
+    > label {
         color: #9B9B9B;
         font-family: 'Open Sans';
         font-size: 18px;

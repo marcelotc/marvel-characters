@@ -4,7 +4,7 @@ export function NewsLetter() {
     return (
         <Container>
             <Title>
-                <h1>RECEBA AS  <br />  NOVIDADES <br /> DA MARVEL</h1>
+                <h1>RECEBA AS  NOVIDADES DA MARVEL</h1>
             </Title>
 
             <EmailContainer>
