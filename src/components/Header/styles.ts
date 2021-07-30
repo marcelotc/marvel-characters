@@ -12,7 +12,7 @@ export const Container = styled.div`
     color: #fff;
     padding: 10px;
 
-    @media (max-width: 588px) {
+    @media (max-width: 662px) {
         flex-direction: column;
 
         > div:first-of-type {
@@ -23,7 +23,7 @@ export const Container = styled.div`
         }
     }
 
-    @media (min-width: 588px) {
+    @media (min-width: 662px) {
         > div:first-of-type {
             svg {
                 display: none;
@@ -45,7 +45,7 @@ export const Menu = styled.div`
         cursor: pointer;
     }
 
-    @media (max-width: 588px) {
+    @media (max-width: 662px) {
         display: none;
     }
 `;
@@ -60,12 +60,12 @@ export const MenuResponsive = styled.div<HeaderProps>`
     transition: height 1s;
     display: ${(props) => props.hide ? 'unset' : 'none'};
 
-    @media (max-width: 588px) {
+    @media (max-width: 662px) {
         position: absolute;
         top: 80px;    
     }
 
-    @media (min-width: 588px) {
+    @media (min-width: 662px) {
         display: none;
     }
 `;
