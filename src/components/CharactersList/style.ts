@@ -74,14 +74,22 @@ export const NoResults = styled.div`
 `;
 
 export const CardContainer = styled.div`
-  background: #000;
   cursor: pointer;
   transition: filter .2s ease;
-  margin-bottom: 20px;
-  box-shadow: 0px 0px 5px 0px #000;
+  margin: 0 30px 30px 0;
+  width: calc(20% - 30px);
 
   &:hover {
     filter: brightness(70%);
+  }
+
+  @media (max-width: 990px) {
+    margin: 0 15px 30px 15px;
+    width: calc(50% - 30px);
+  }
+
+  @media (max-width: 510px) {
+    width: 100%;
   }
 `;
 
@@ -89,7 +97,6 @@ export const Card = styled.div`
  display: flex;
  align-items: flex-start;
  justify-content: center;
- width: 170px;
  height: 210px;
  min-width: 150px;
  font-family: 'Oswald';
@@ -158,7 +165,7 @@ export const CardFooter = styled.div`
   background: #000;
   margin-bottom: 20px;
   height: 100px;
-  width: 170px;
+  min-width: 150px;
 
   > p {
     padding: 20px;
