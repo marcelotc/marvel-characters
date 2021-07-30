@@ -14,8 +14,6 @@ export const Container = styled.div`
 
   background: #000;
 
-  
-  
   @media (max-width: 625px) {
     margin: 0;
   }
@@ -81,9 +79,16 @@ export const SlideWrapper = styled.div`
 
   transition: all 0.5s;
  
+  @media (max-width: 476px) {
+    margin-left: 12px;
+  }
 
   @media (min-width: 368px) {
     min-width: 215px;
+  }
+
+  @media (max-width: 368px) {
+    min-width: unset;
   }
 
   @media (max-width: 368px) {
