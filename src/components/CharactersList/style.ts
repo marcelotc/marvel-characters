@@ -14,6 +14,7 @@ export const ListHeader = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: space-between;
+  width: 98%;
 
   > h2 {
     font-family: 'Oswald';
