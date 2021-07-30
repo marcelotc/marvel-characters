@@ -1,4 +1,4 @@
-import { Slider } from './components/Slider';
+import { Carousel } from './components/Carousel';
 import { Header } from './components/Header';
 import { Banner } from './components/Banner';
 import { CharactersList } from './components/CharactersList';
@@ -12,7 +12,7 @@ function App() {
     <>
      <Header />
      <Banner />
-     <Slider />
+     <Carousel />
      <CharactersList />
      <MarvelCard />
      <NewsLetter />

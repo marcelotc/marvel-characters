@@ -1,10 +1,5 @@
 import styled from 'styled-components';
 
-interface SlideProps {
-    currentSlide?: number;
-    slidesLength?: number;
-}
-
 export const Container = styled.div`
   display: flex;
   align-items: center;
@@ -19,6 +14,8 @@ export const Container = styled.div`
 
   background: #000;
 
+  
+  
   @media (max-width: 625px) {
     margin: 0;
   }
@@ -33,13 +30,13 @@ export const Container = styled.div`
 export const SliderHeader = styled.div`
     display: flex;
     justify-content: space-between;
-    width: 100%;
+    width: 97.5%;
+    margin-bottom: 30px;
 
     > h2 {
       font-family: 'Oswald';
       color: #fff;
       font-weight: 500;
-      margin-left: 12px;
     }
 
  @media (max-width: 625px) {
@@ -60,47 +57,21 @@ export const ButtonsWrapper = styled.div`
   margin-right: 1px;
 `;
 
-export const NextButton = styled.div<SlideProps>`
+export const NextButton = styled.div`
   display: flex;
   align-items: center;
   border: 3px solid #fff;
   color: #fff;
   padding: 3px;
-  cursor: ${({ currentSlide, slidesLength = 3 }) =>
-        currentSlide !== slidesLength - 1 ? 'pointer' : 'unset'};
-
-  pointer-events: ${({ currentSlide, slidesLength = 3 }) =>
-        currentSlide !== slidesLength - 1 ? 'all' : 'none'};
-
-  opacity: ${({ currentSlide, slidesLength = 3 }) =>
-        currentSlide !== slidesLength - 1 ? '1' : '.7'};
-
+  cursor: pointer;
 `;
 
 export const PrevButton = styled(NextButton)`
-  cursor: ${({ currentSlide }) => (currentSlide === 0 ? 'unset' : 'pointer')};
-  pointer-events: ${({ currentSlide }) =>
-        currentSlide === 0 ? 'none' : 'all'};
-  opacity: ${({ currentSlide }) => (currentSlide === 0 ? '.7' : '1')};
+  
 `;
 
 
-export const SliderContainer = styled.div`
-  display: flex;
-  align-items: flex-end;
-
-  width: 100%;
-
-  padding: 15px;
-
-  overflow: hidden;
-
-  @media (min-width: 1300.1px) {
-    max-width: 1211px;
-  }
-`;
-
-export const SlideWrapper = styled.div<SlideProps>`
+export const SlideWrapper = styled.div`
   display: flex;
   align-items: flex-start;
   justify-content: center;
@@ -109,8 +80,7 @@ export const SlideWrapper = styled.div<SlideProps>`
   padding: 0 23px 0 7px;
 
   transition: all 0.5s;
-  transform: ${({ currentSlide }) =>
-        currentSlide ? `translateX(-${currentSlide}00%)` : 'translate(0%)'};
+ 
 
   @media (min-width: 368px) {
     min-width: 215px;
@@ -121,7 +91,7 @@ export const SlideWrapper = styled.div<SlideProps>`
   }
 `;
 
-export const Slide = styled.div<SlideProps>`
+export const Slide = styled.div`
  display: flex;
  align-items: flex-start;
  justify-content: center;
@@ -132,18 +102,6 @@ export const Slide = styled.div<SlideProps>`
  font-weight: 500;
  color: #fff;
  border-bottom: 5px solid red;
- 
- .characterImg {
-  box-shadow: inset 0px -85px 70px rgb(0 0 0 / 90%);
-
-  > img {
-    height: 100%;
-    width: 100%;
-
-    position: relative;
-  z-index: -2;
- }
-}
 
  .label-movies {
     position: absolute;
@@ -187,10 +145,19 @@ export const Slide = styled.div<SlideProps>`
     text-transform: capitalize;
 }
 
+ > img {
+    height: 100%;
+    width: 100%;
+ }
+
  > h4 {
      position: absolute;
      color: #fff;
      bottom: 18px;
      text-shadow: 2px 2px 10px #000;
  }
+
+  @media (max-width: 1000px) {
+      width: 100%;
+  }
 `;

@@ -1,9 +1,10 @@
-import { useEffect, useState } from 'react';
+import { useEffect, useState, useRef } from 'react';
 import api from '../../services/api';
 import { time, publicKey, hash} from '../../services/authorization';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import { Fade } from 'react-reveal';
+import Slider from "react-slick";
 
 import {
   Container,
@@ -13,8 +14,10 @@ import {
   PrevButton,
   SlideWrapper,
   Slide,
-  SliderContainer,
 } from './styles';
+
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 interface CharactersInterface {
   id: string;
@@ -25,10 +28,11 @@ interface CharactersInterface {
   }
 }
 
-export function Slider() {
+export function Carousel() {
   const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [characters, setCharacters] = useState<CharactersInterface[]>();
   const [loading, setLoading] = useState(false);
+  const sliderRef = useRef<Slider>(null);
 
   const getSpeiderMan = `/v1/public/characters?ts=${time}&name=Spider-Man (Peter Parker)&apikey=${publicKey}&hash=${hash}`;
   const getBlackWidow = `/v1/public/characters?ts=${time}&name=Black Widow&apikey=${publicKey}&hash=${hash}`;
@@ -79,16 +83,59 @@ export function Slider() {
     getIronMan
   ]);
 
-  const decreaseSlide = (slide: number, setSlide: Function) => {
-    slide !== 0 && setSlide(slide - 1);
+  const decreaseSlide = () => {
+    sliderRef.current?.slickPrev()
   };
 
-  const increaseSlide = (
-    slide: number,
-    setSlide: Function,
-    slideLength: number,
-  ) => {
-    slide !== slideLength && setSlide(slide + 1);
+  const increaseSlide = () => {
+    sliderRef.current?.slickNext()
+  };
+
+  const settings = {
+    dots: true,
+    infinite: false,
+    speed: 500,
+    slidesToShow: 5,
+    slidesToScroll: 3,
+    arrows: false,  
+    responsive: [
+      {
+        breakpoint: 1220,
+        settings: {
+          slidesToShow: 4,
+          slidesToScroll: 3,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 996,
+        settings: {
+          slidesToShow: 3,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 712,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true
+        }
+      },
+      {
+        breakpoint: 476,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 1,
+          infinite: true,
+          dots: true
+        }
+      },
+    ]
   };
 
   return (
@@ -99,37 +146,31 @@ export function Slider() {
 
           <ButtonsWrapper>
               <PrevButton
-                currentSlide={currentSlide}
-                slidesLength={characters?.length}
-                onClick={() => decreaseSlide(currentSlide, setCurrentSlide)}
+                onClick={() => decreaseSlide()}
               ><FaChevronLeft color="#fff" /></PrevButton>
 
               <NextButton
-                currentSlide={currentSlide}
-                slidesLength={characters?.length}
-                onClick={() => increaseSlide(currentSlide, setCurrentSlide, characters?.length as number)}
+                onClick={() => increaseSlide()}
               ><FaChevronRight color="#fff"  /></NextButton>
           </ButtonsWrapper>
           </SliderHeader>
           {!loading ? (
           <Fade bottom>
-          <SliderContainer>
+          <Slider ref={sliderRef} {...settings}>
             {characters?.map((character) => (
-              <SlideWrapper key={character.id} currentSlide={currentSlide}>
-                <Slide>
-                  <span className="label-movies" />
-                  <p>movies</p>
-                  <div className="characterImg">
-                    <img 
-                      src={`${character.thumbnail.path}.${character.thumbnail.extension}`} 
-                      alt="Personagens"
-                    />
-                  </div>
-                  <h4>{character.name}</h4>
-                </Slide>
-              </SlideWrapper>
+              <SlideWrapper key={character.id}>
+               <Slide>
+                <span className="label-movies" />
+                <p>movies</p>
+                 <img 
+                   src={`${character.thumbnail.path}.${character.thumbnail.extension}`} 
+                   alt="Personagens"
+                 />
+                 <h4>{character.name}</h4>
+               </Slide>
+             </SlideWrapper>
             ))}
-          </SliderContainer>
+          </Slider>
           </Fade> ) : (
             <SkeletonTheme color="#222" highlightColor="red">
               <div style={{marginTop: '30px'}}>
