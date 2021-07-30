@@ -26,12 +26,15 @@ export const Container = styled.div`
     }
 
     .signUp {
-        font-family: 'Open Sans';
+        font: normal normal bold 14px/14px Open Sans;
+        font-weight: bold;
         background: red;
         padding: 20px 70px 20px 70px;
         cursor: pointer;
         transition: background-color 0.5s ease;
         margin-top: 40px;
+        border: none;
+        color: #fff;
 
         &:hover {
             background: #000;
@@ -44,6 +47,9 @@ export const Container = styled.div`
         margin-top: 15px;
         cursor: pointer;
         transition: color 0.5s ease;
+        border: none;
+        color: red;
+        background: #fff;
 
         &:hover {
             color: #000;
