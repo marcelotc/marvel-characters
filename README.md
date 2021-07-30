@@ -9,7 +9,7 @@
 </h4>
 
 <p align="center">
-  <a href="https://yeidlstreet-survey.netlify.app/">
+  <a href="https://marvel-characters-test.netlify.app/">
     <img alt="Demo on Netlify" src="src/assets/readmeImage.png">
   </a>
 </p>
