@@ -5,7 +5,10 @@ export const Container = styled.div`
     align-items: flex-start;
     justify-content: flex-end;
     background: #000;
-    padding-bottom: 100px;
+
+    @media (max-width: 1204px) {
+        flex-direction: column;
+    }
 `;
 
 export const EmailContainer = styled.div`
@@ -22,11 +25,7 @@ export const EmailContainer = styled.div`
 
     @media (max-width: 1204px) {
         display: table;
-        margin: 215px auto 0 auto;
-        
-        > h1 {
-            text-align: center;
-        }
+        margin: 0 auto 80px auto;
     }
 `;
 
@@ -68,5 +67,33 @@ export const InputContainer = styled.div`
         > button {
             width: 100%;
         }
+    }
+`;
+
+export const Title = styled.div`
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    font-family: 'Oswald';
+    font-size: 22px;
+    background: red;
+    width: 408px;
+    height: 329px;
+    align-self: flex-start;
+    margin-right: 54px;
+    transform: translateY(-140px);
+
+    h1 {
+        font: normal normal bold 62px/78px Oswald;
+    }
+
+    @media (max-width: 1204px) {
+        margin: 0 auto;
+    }
+
+    @media (max-width: 435px) {
+        font-size: 2vw;
+        width: 95%;
     }
 `;
