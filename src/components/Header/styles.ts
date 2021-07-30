@@ -36,7 +36,9 @@ export const Menu = styled.div`
     display: flex;
     color: #fff;
     font-family: 'Open Sans';
-    gap: 15px;
+    font-size: 14px;
+    font-weight: bold;
+    gap: 50px;
     margin-right: 15px;
 
     > p {
