@@ -85,10 +85,15 @@ export const CardContainer = styled.div`
 
   @media (max-width: 990px) {
     width: calc(50% - 30px);
+    margin: 0 15px 30px 15px;
   }
 
   @media (max-width: 510px) {
     width: 100%;
+  }
+
+  @media (max-width: 394px) {
+    margin: unset;
   }
 `;
 
