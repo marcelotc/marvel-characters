@@ -10,8 +10,8 @@ export function MarvelCard() {
                 <label>Desbloqueie seus super poderes</label>
                 <img src={marvelCard} alt="Marvel Mastercard" />
             </Fade>
-            <a className="signUp">CADASTRE-SE AGORA</a>
-            <a className="howWorks">ENTENDA COMO FUNCIONA</a>
+            <a className="signUp" href="#">CADASTRE-SE AGORA</a>
+            <a className="howWorks" href="#">ENTENDA COMO FUNCIONA</a>
         </Container>
     )
 }
