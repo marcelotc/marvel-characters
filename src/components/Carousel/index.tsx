@@ -29,7 +29,6 @@ interface CharactersInterface {
 }
 
 export function Carousel() {
-  const [currentSlide, setCurrentSlide] = useState<number>(0);
   const [characters, setCharacters] = useState<CharactersInterface[]>();
   const [loading, setLoading] = useState(false);
   const sliderRef = useRef<Slider>(null);
