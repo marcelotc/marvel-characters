@@ -5,7 +5,6 @@ import { Pagination } from './component/Pagination';
 import { ModalComponent } from './component/Modal';
 import { CharactersInterface } from './component/types';
 import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
-import { Fade } from 'react-reveal';
 import api from '../../services/api';
 
 import { 
