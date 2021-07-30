@@ -119,10 +119,12 @@ export function Slider() {
                 <Slide>
                   <div className="title" />
                   <p>MOVIES</p>
-                  <img 
-                    src={`${character.thumbnail.path}.${character.thumbnail.extension}`} 
-                    alt="Personagens"
-                  />
+                  <div className="characterImg">
+                    <img 
+                      src={`${character.thumbnail.path}.${character.thumbnail.extension}`} 
+                      alt="Personagens"
+                    />
+                  </div>
                   <h4>{character.name}</h4>
                 </Slide>
               </SlideWrapper>

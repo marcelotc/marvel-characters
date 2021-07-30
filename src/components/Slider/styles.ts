@@ -132,6 +132,18 @@ export const Slide = styled.div<SlideProps>`
  font-weight: 500;
  color: #fff;
  border-bottom: 5px solid red;
+ 
+ .characterImg {
+  box-shadow: inset 0px -85px 70px rgb(0 0 0 / 90%);
+
+  > img {
+    height: 100%;
+    width: 100%;
+
+    position: relative;
+  z-index: -2;
+ }
+}
 
  .title {
     position: absolute;
@@ -173,11 +185,6 @@ export const Slide = styled.div<SlideProps>`
     position: absolute;
     margin-top: 8px;
 }
-
- > img {
-    height: 100%;
-    width: 100%;
- }
 
  > h4 {
      position: absolute;
