@@ -108,6 +108,16 @@ export const Slide = styled.div`
  color: #fff;
  border-bottom: 5px solid red;
 
+ .characterImg {
+  box-shadow: inset 0px -85px 70px rgb(0 0 0 / 90%);
+  > img {
+    height: 100%;
+    width: 100%;
+    position: relative;
+  z-index: -2;
+ }
+}
+
  .label-movies {
     position: absolute;
     text-align: center;
