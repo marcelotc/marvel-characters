@@ -161,10 +161,12 @@ export function Carousel() {
                <Slide>
                 <span className="label-movies" />
                 <p>movies</p>
+                <div className="characterImg">
                  <img 
                    src={`${character.thumbnail.path}.${character.thumbnail.extension}`} 
                    alt="Personagens"
                  />
+                 </div>
                  <h4>{character.name}</h4>
                </Slide>
              </SlideWrapper>
